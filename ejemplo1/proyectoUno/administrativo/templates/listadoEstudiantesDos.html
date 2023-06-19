@@ -4,26 +4,26 @@
 
 {% for e in estudiantes %}
 
-  {{e}}
-  <br/>
-  <b>{{e.nombre}}</b> {{e.apellido}} {{e.cedula}} 
-  <br/>
-  <ul>
+{{e}}
+<br />
+<b>{{e.nombre}}</b> {{e.apellido}} {{e.cedula}}
+<br />
+<ul>
   {% for numero in e.mis_numeros_telefonicos.all %}
-      <li>
-          Número telefónico {{numero.telefono}}<br/>
-      </li>
+  <li>
+    Número telefónico {{numero.telefono}}<br />
+  </li>
   {% endfor %}
-  </ul>
-  <br/>
+</ul>
+<br />
 {% endfor %}
 
 <hr>
 
 <ul>
 
-{% for e in mis_numeros_telefonicos %}
+  {% for e in mis_numeros_telefonicos %}
   <li>{{ e }} </li>
-{% endfor %}
-
+  {% endfor %}
+  {{mis_numeros_telefonicos| length}}
 </ul>

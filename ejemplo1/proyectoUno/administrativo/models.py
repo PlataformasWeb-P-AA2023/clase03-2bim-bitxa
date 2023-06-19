@@ -11,6 +11,9 @@ class Estudiante(models.Model):
         return "%s %s %s" % (self.nombre,
                 self.apellido,
                 self.cedula)
+    
+    def get_two_letters(self):
+        return self.nombre[0:2]
 
 class NumeroTelefonico(models.Model):
     telefono = models.CharField(max_length=100)

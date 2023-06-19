@@ -9,6 +9,7 @@ from administrativo.models import *
 # Create your views here.
 
 def index(request):
+    print ("Hola desde el index")
     # return HttpResponse("Hola mundo desde Python")
     return HttpResponse("Hola mundo desde Python<br/><br/>%s" % (request.path))
 
