@@ -11,6 +11,8 @@ urlpatterns = [
         path('bienvenidos', views.index, name='index'),
         path('estudiante/<int:id>', views.obtener_estudiante,
             name='obtener_estudiante'),
+        path('estudiante/find/<str:value>', views.name_contains, 
+            name='find_estudiante'),
         path('estudiante/busca/<str:cadena>', views.busca,
             name='busca'),
  ]

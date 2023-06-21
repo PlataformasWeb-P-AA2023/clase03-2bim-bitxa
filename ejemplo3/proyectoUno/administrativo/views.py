@@ -42,6 +42,12 @@ def obtener_estudiante(request, id):
     informacion_template = {'estudiante': estudiante}
     return render(request, 'obtener_estudiante.html', informacion_template)
 
+def name_contains(request, value):
+    estudiantes = Estudiante.objects.filter(nombre__icontains = value).all()
+
+    informacion_template = {'estudiantes': estudiantes}
+    return render(request, 'obtener_estudiante.html', informacion_template)
+
 
 def busca(request, cadena):
     """

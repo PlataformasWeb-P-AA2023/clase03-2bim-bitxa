@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from administrativo.models import Estudiante
+from administrativo.models import Estudiante, NumeroTelefonico
 
 
 class EstudianteForm(ModelForm): 
@@ -8,5 +8,9 @@ class EstudianteForm(ModelForm):
         fields = ['nombre', 'apellido', 'cedula'] 
 
 
+class NumeroTelefonicoForm(ModelForm): 
+    class Meta:
+        model = NumeroTelefonico
+        fields = ['telefono', 'tipo', 'estudiante'] 
 
 

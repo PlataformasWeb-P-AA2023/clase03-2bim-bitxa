@@ -21,10 +21,13 @@ def index(request):
     # se lo almacena en una variable llamada
     # estudiantes
     estudiantes = Estudiante.objects.all()
+    allTelefonos = NumeroTelefonico.objects.all()
+    
     # en la variable tipo diccionario llamada informacion_template
     # se agregará la información que estará disponible
     # en el template
-    informacion_template = {'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes)}
+    informacion_template = {'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes),
+                            'telefonos': allTelefonos}
     return render(request, 'index.html', informacion_template)
 
 
@@ -60,6 +63,25 @@ def crear_estudiante(request):
     diccionario = {'formulario': formulario}
 
     return render(request, 'crearEstudiante.html', diccionario)
+
+
+def editar_telefono(request, id):
+    """
+    """
+    print("---------------")
+    print(request)
+    print("---------------")
+    telefono = NumeroTelefonico.objects.get(pk=id)
+    if request.method=='POST':
+        formulario = NumeroTelefonicoForm(request.POST, instance=telefono)
+        print(formulario.errors)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(index)
+    else:
+        formulario = NumeroTelefonicoForm(instance=telefono)
+    diccionario = {'formulario': formulario}
+    return render(request, 'editarTelefono.html', diccionario)
 
 
 def editar_estudiante(request, id):
